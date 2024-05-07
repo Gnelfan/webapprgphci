@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+   
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>webmaprgphci</title>
+        <link rel="stylesheet" href="../libs/rgphci.css"/>
+        <link rel="stylesheet" href="../libs/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../leaflet/leaflet.css"/>
+        <link rel="stylesheet" href="../libs/src/leaflet-search.css"/>
+        <link rel="stylesheet" href="../libs/Leaflet.Coordinates-0.1.5.css"/>
+        <link href="../libs/Leaflet.fullscreen/leaflet.fullscreen.css"rel="stylesheet"/>
+        <link rel="stylesheet" href="../libs/MarkerCluster.css" />
+        <link rel="stylesheet" href="../libs/MarkerCluster.Default.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="../leaflet/leaflet.js"></script>
+        <script src="../libs/src/leaflet-search.js"></script>
+        <script src="../libs/Leaflet.Coordinates-0.1.5.min.js"></script>  
+        <script src="../libs/Leaflet.fullscreen/Leaflet.fullscreen.min.js"></script>
+        <script src="../libs/jquery-3.6.4.min.js"></script>
+        <script src="../libs/leaflet.markercluster-src.js"></script>
+        <script src="../data/pop2014.js"></script>
+        <script src="../data/sousPrefecture_2013.js"></script>
+        <script src="../data/departement_2013.js"></script>
+        <script src="../data/region_2013.js"></script> 
+    </head>
+    <body>
+        <!-- Bouton de déclenchement de la fenêtre info --> 
+        <button type="button" id="modalTriggerBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal" style="display:none;">
+            Info
+           </button>
+  
+        <!-- Fenêtre information -->
+        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #345275;">
+                <h1 class="modal-title fs-5 text-white" id="infoModalLabel">Bienvenue !</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                    <b>
+                        CAPDEV - Laboratoire de Géographie de la Population
+                    </b>
+                        vous présente la carte du recensement générale de la population en 1975, 1998 et 2014. 
+                        Cliquer sur chaque année pour avoir accès à la carte de l'année concernée.
+                        Pour avoir des informations sur les différentes localités, 
+                        faite un clic sur une localité ou faite une recherche
+                        sur la localité que vous recherchez à partir de la barre de recherche.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- barre de navigation fixe -->
+        <header>
+            
+        </header>
+          
+          <!-- page content -->
+        <main class="flex-shrink-0">
+                <!-- Cartographie -->
+                <div class="container-fluid" id="map"></div>   
+        </main>
+          
+        <footer >
+          
+        </footer>
+        
+        <script>
+            document.addEventListener(function() {
+            // Ouvrir la fenêtre modale au chargement de la page
+            document.getElementById('modalTriggerBtn').click();
+            });
+
+            $(document).ready(function() {
+            // Supprimer le déclenchement de la fenêtre modale après le chargement de la page
+            $('#modalTriggerBtn').removeAttr('data-bs-toggle');
+            $('#modalTriggerBtn').removeAttr('#infoModal');
+            });
+          </script>
+        <script src="../libs/bootstrap.bundle.min.js"></script> 
+    </body>
+    <script src="rgphci14.js"></script>
+
+</html>
