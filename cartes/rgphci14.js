@@ -185,10 +185,10 @@ L.control.coordinates({
 
 
 //Ajout fichier geoJSON population 2014 
-const geojsonPop =  L.geoJSON(pop2014JSON, {
+const geojsonLayer1 =  L.geoJSON(pop2014JSON, {
   pointToLayer: function(feature, latlng) {
     return L.circleMarker(latlng, {
-      radius: 8, fillColor: '#07457a', color: '#ffffff', weight: 3, opacity: 1,fillOpacity: 1
+      radius: 5, fillColor: '#688a01', color: '#ffffff', weight: 1.5, opacity: 1,fillOpacity: 1
   });
   },
   onEachFeature: function(feature, layer) {
@@ -275,7 +275,7 @@ const geojsonLayer2 = L.geoJSON(sp2013Json, {
       color: '#818181',
       weight: 0.5,
       fillColor: '#d5f2e0',
-      fillOpacity: 0.5
+      fillOpacity: 0
     };
   },
   onEachFeature: function (feature, layer) {
@@ -288,21 +288,21 @@ const geojsonLayer2 = L.geoJSON(sp2013Json, {
 });
 
 const overlayLayers = {
-  "Population en 2014": geojsonPop,
+  "Population en 2014": geojsonLayer1,
   "Sous-préfectures 2013": geojsonLayer2,
   "Déprtements 2013": geojsonLayer3,
   "Régions 2013": geojsonLayer4,
     
   };
 
-  const geojsonLayer1 = L.markerClusterGroup();
+  //const geojsonLayer1 = L.markerClusterGroup();
   
 
   const layerControl = L.control.layers(baselayerLayers, null, { collapsed: false });
   layerControl.addTo(map);
 
   // Ajouter les couches GeoJSON à la carte
-  geojsonLayer1.addLayer(geojsonPop)
+  geojsonLayer1.addTo(map)
   geojsonLayer2.addTo(map);
   geojsonLayer3.addTo(map);
   geojsonLayer4.addTo(map);
@@ -431,7 +431,3 @@ copyright.onAdd = function () {
    return div;
  };
  copyright.addTo(map);
-
-
-
-
